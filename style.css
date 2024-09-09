@@ -363,7 +363,8 @@ body {
     margin-top: 40px;
 }
 
-.audio-section audio, .audio-section iframe {
-    display: none;
+#background-audio {
+    display: none; /* Menyembunyikan elemen video dari tampilan */
 }
+
 
