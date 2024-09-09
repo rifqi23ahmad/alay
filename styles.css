@@ -4,6 +4,10 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Mengatur tinggi viewport */
 }
 
 .container {
@@ -12,6 +16,7 @@ body {
     text-align: center;
     padding: 20px;
     position: relative;
+    z-index: 1; /* Memastikan konten di atas partikel */
 }
 
 header {
@@ -54,6 +59,9 @@ button, .button {
 #heartImage {
     width: 100px;
     margin-top: 10px;
+    display: block; /* Menjadikan elemen blok */
+    margin-left: auto; /* Otomatis margin kiri */
+    margin-right: auto; /* Otomatis margin kanan */
 }
 
 .hidden {
@@ -72,7 +80,7 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: -1;
+    z-index: 0; /* Menempatkan partikel di belakang konten */
 }
 
 .response-buttons {
