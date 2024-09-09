@@ -1,3 +1,4 @@
+// Logika Game
 const balloon = document.getElementById("balloon");
 const scoreDisplay = document.getElementById("score");
 const startButton = document.getElementById("start-game");
@@ -53,8 +54,6 @@ balloon.addEventListener("click", () => {
     }
 });
 
-// Logika game sebelumnya
-
 // Lightbox untuk galeri
 const lightbox = document.getElementById("lightbox");
 const lightboxImg = document.getElementById("lightbox-img");
@@ -80,3 +79,82 @@ lightbox.addEventListener("click", (event) => {
         lightbox.style.display = "none";
     }
 });
+
+// Fitur Catatan
+const noteForm = document.getElementById("note-form");
+const noteInput = document.getElementById("note-input");
+const notesContainer = document.getElementById("notes-container");
+
+// Load catatan dari Local Storage saat halaman dimuat
+document.addEventListener("DOMContentLoaded", loadNotes);
+
+// Event listener untuk form penambahan catatan
+noteForm.addEventListener("submit", addNote);
+
+// Fungsi untuk menambah catatan
+function addNote(e) {
+    e.preventDefault();
+    const noteText = noteInput.value.trim();
+    if (noteText === "") return;
+
+    const note = {
+        id: Date.now(),
+        text: noteText
+    };
+
+    saveNoteToLocalStorage(note);
+    displayNote(note);
+    noteInput.value = "";
+}
+
+// Fungsi untuk menampilkan catatan di DOM
+function displayNote(note) {
+    const noteDiv = document.createElement("div");
+    noteDiv.classList.add("note");
+    noteDiv.setAttribute("data-id", note.id);
+
+    const noteContent = document.createElement("p");
+    noteContent.innerText = note.text;
+
+    const deleteButton = document.createElement("button");
+    deleteButton.classList.add("delete-note");
+    deleteButton.innerHTML = "&times;";
+    deleteButton.addEventListener("click", () => deleteNote(note.id));
+
+    noteDiv.appendChild(noteContent);
+    noteDiv.appendChild(deleteButton);
+    notesContainer.prepend(noteDiv);
+}
+
+// Fungsi untuk menghapus catatan
+function deleteNote(id) {
+    // Hapus dari DOM
+    const noteDiv = document.querySelector(`.note[data-id='${id}']`);
+    if (noteDiv) {
+        notesContainer.removeChild(noteDiv);
+    }
+
+    // Hapus dari Local Storage
+    let notes = getNotesFromLocalStorage();
+    notes = notes.filter(note => note.id !== id);
+    localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+// Fungsi untuk menyimpan catatan ke Local Storage
+function saveNoteToLocalStorage(note) {
+    const notes = getNotesFromLocalStorage();
+    notes.push(note);
+    localStorage.setItem("notes", JSON.stringify(notes));
+}
+
+// Fungsi untuk mengambil catatan dari Local Storage
+function getNotesFromLocalStorage() {
+    const notes = localStorage.getItem("notes");
+    return notes ? JSON.parse(notes) : [];
+}
+
+// Fungsi untuk memuat catatan saat halaman dimuat
+function loadNotes() {
+    const notes = getNotesFromLocalStorage();
+    notes.forEach(note => displayNote(note));
+}

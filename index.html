@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="id">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -11,7 +11,7 @@
         <!-- Bagian Permintaan Maaf -->
         <section class="apology-section">
             <h1>Maafkan Aku Hmm Hmm</h1>
-            <p>"Sayang, aku ingin meminta maaf atas sikapku selama ini. Aku sadar bahwa aku terlalu sering menggunakan logika 'if-then-else' dalam menghadapi masalah kita. Aku seharusnya lebih peka terhadap perasaanmu dan tidak selalu berusaha mencari solusi yang logis. Aku tahu, terkadang kamu hanya butuh didengar dan dihibur, bukan diberi solusi. Aku akan berusaha lebih keras untuk menjadi pendengar yang baik dan lebih peka terhadap emosi. Maafkan aku."</p>
+            <p>"Sayang, aku ingin meminta maaf atas sikapku selama ini. Aku sadar bahwa aku terlalu sering menggunakan logika 'if-then-else' dalam menghadapi masalah kita. Aku seharusnya lebih peka terhadap perasaanmu dan tidak selalu berusaha mencari solusi yang logis. Aku tahu, terkadang kamu hanya butuh didengar dan dihibur, bukan diberi solusi. Aku akan berusaha lebih keras untuk menjadi pendengar yang baik dan lebih peka terhadap emosi. Maafkan aku.".</p>
             
             <!-- Tombol -->
             <div class="button-group">
@@ -25,7 +25,7 @@
             <h2>Kenangan Indah</h2>
             <div class="gallery">
                 <img src="PXL_20240616_120636617.NIGHT.jpg" alt="Foto Kenangan 1" class="gallery-img">
-        
+                <!-- Tambahkan lebih banyak foto jika diperlukan -->
             </div>
         </section>
 
@@ -38,6 +38,18 @@
             </div>
             <p id="score">Skor: 0</p>
             <button id="start-game" class="button start-game">Mulai Permainan</button>
+        </section>
+
+        <!-- Bagian Catatan -->
+        <section class="notes-section">
+            <h2>Catatan</h2>
+            <form id="note-form">
+                <textarea id="note-input" placeholder="Tulis catatanmu di sini..." required></textarea>
+                <button type="submit" class="button add-note">Tambah Catatan</button>
+            </form>
+            <div id="notes-container">
+                <!-- Catatan akan ditampilkan di sini -->
+            </div>
         </section>
     </div>
 
