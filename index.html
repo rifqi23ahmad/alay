@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -25,6 +25,7 @@
             <h2>Kenangan Indah</h2>
             <div class="gallery">
                 <img src="PXL_20240616_120636617.NIGHT.jpg" alt="Foto Kenangan 1" class="gallery-img">
+                <img src="PXL_20240630_070912128.MP.jpg" alt="Foto Kenangan 2" class="gallery-img">
                 <!-- Tambahkan lebih banyak foto jika diperlukan -->
             </div>
         </section>
@@ -40,15 +41,15 @@
             <button id="start-game" class="button start-game">Mulai Permainan</button>
         </section>
 
-        <!-- Bagian Catatan -->
+        <!-- Catatan -->
         <section class="notes-section">
-            <h2>Catatan</h2>
-            <form id="note-form">
-                <textarea id="note-input" placeholder="Tulis catatanmu di sini..." required></textarea>
-                <button type="submit" class="button add-note">Tambah Catatan</button>
-            </form>
-            <div id="notes-container">
-                <!-- Catatan akan ditampilkan di sini -->
+            <h2>Catatan Pribadi</h2>
+            <textarea id="note-input" placeholder="Tuliskan catatanmu di sini..."></textarea>
+            <button id="save-note" class="button start-game">Simpan Catatan</button>
+            <div id="saved-note-container">
+                <h3>Catatan Tersimpan:</h3>
+                <p id="saved-note"></p>
+                <small id="saved-note-time"></small>
             </div>
         </section>
     </div>

@@ -328,3 +328,32 @@ body {
         height: 70px;
     }
 }
+
+/* Style untuk catatan yang tersimpan */
+#saved-note-container {
+    margin-top: 20px;
+}
+
+#saved-note-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#saved-note {
+    font-size: 1rem;
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word;
+}
+
+#saved-note-time {
+    font-size: 0.8rem;
+    color: #888;
+    margin-top: 5px;
+    display: block;
+}

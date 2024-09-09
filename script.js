@@ -80,81 +80,43 @@ lightbox.addEventListener("click", (event) => {
     }
 });
 
-// Fitur Catatan
-const noteForm = document.getElementById("note-form");
+// Logika game dan lightbox sebelumnya
+
+// Catatan - menggunakan localStorage
 const noteInput = document.getElementById("note-input");
-const notesContainer = document.getElementById("notes-container");
+const saveNoteButton = document.getElementById("save-note");
+const savedNoteContainer = document.getElementById("saved-note");
+const savedNoteTime = document.getElementById("saved-note-time");
 
-// Load catatan dari Local Storage saat halaman dimuat
-document.addEventListener("DOMContentLoaded", loadNotes);
+// Fungsi untuk menyimpan catatan ke localStorage
+saveNoteButton.addEventListener("click", () => {
+    const noteContent = noteInput.value;
+    const currentDateTime = new Date();  // Ambil waktu saat ini
 
-// Event listener untuk form penambahan catatan
-noteForm.addEventListener("submit", addNote);
-
-// Fungsi untuk menambah catatan
-function addNote(e) {
-    e.preventDefault();
-    const noteText = noteInput.value.trim();
-    if (noteText === "") return;
-
-    const note = {
-        id: Date.now(),
-        text: noteText
-    };
-
-    saveNoteToLocalStorage(note);
-    displayNote(note);
-    noteInput.value = "";
-}
-
-// Fungsi untuk menampilkan catatan di DOM
-function displayNote(note) {
-    const noteDiv = document.createElement("div");
-    noteDiv.classList.add("note");
-    noteDiv.setAttribute("data-id", note.id);
-
-    const noteContent = document.createElement("p");
-    noteContent.innerText = note.text;
-
-    const deleteButton = document.createElement("button");
-    deleteButton.classList.add("delete-note");
-    deleteButton.innerHTML = "&times;";
-    deleteButton.addEventListener("click", () => deleteNote(note.id));
-
-    noteDiv.appendChild(noteContent);
-    noteDiv.appendChild(deleteButton);
-    notesContainer.prepend(noteDiv);
-}
-
-// Fungsi untuk menghapus catatan
-function deleteNote(id) {
-    // Hapus dari DOM
-    const noteDiv = document.querySelector(`.note[data-id='${id}']`);
-    if (noteDiv) {
-        notesContainer.removeChild(noteDiv);
+    if (noteContent.trim() !== "") {
+        // Simpan catatan dan waktu pembuatan ke localStorage
+        localStorage.setItem("savedNote", noteContent);
+        localStorage.setItem("savedNoteTime", currentDateTime.toLocaleString());  // Format tanggal dan waktu
+        displaySavedNote();  // Tampilkan catatan tersimpan
+        noteInput.disabled = true;  // Disable input agar tidak bisa diubah
+        saveNoteButton.disabled = true;  // Disable tombol simpan setelah catatan disimpan
     }
+});
 
-    // Hapus dari Local Storage
-    let notes = getNotesFromLocalStorage();
-    notes = notes.filter(note => note.id !== id);
-    localStorage.setItem("notes", JSON.stringify(notes));
+// Fungsi untuk menampilkan catatan yang tersimpan
+function displaySavedNote() {
+    const savedNote = localStorage.getItem("savedNote");
+    const savedTime = localStorage.getItem("savedNoteTime");
+
+    if (savedNote) {
+        savedNoteContainer.textContent = savedNote;  // Tampilkan catatan tersimpan
+        savedNoteTime.textContent = `Dibuat pada: ${savedTime}`;  // Tampilkan waktu pembuatan
+        noteInput.disabled = true;  // Matikan input agar tidak bisa diubah
+        saveNoteButton.disabled = true;  // Disable tombol simpan
+    }
 }
 
-// Fungsi untuk menyimpan catatan ke Local Storage
-function saveNoteToLocalStorage(note) {
-    const notes = getNotesFromLocalStorage();
-    notes.push(note);
-    localStorage.setItem("notes", JSON.stringify(notes));
-}
-
-// Fungsi untuk mengambil catatan dari Local Storage
-function getNotesFromLocalStorage() {
-    const notes = localStorage.getItem("notes");
-    return notes ? JSON.parse(notes) : [];
-}
-
-// Fungsi untuk memuat catatan saat halaman dimuat
-function loadNotes() {
-    const notes = getNotesFromLocalStorage();
-    notes.forEach(note => displayNote(note));
-}
+// Tampilkan catatan tersimpan ketika halaman dimuat
+window.addEventListener("load", () => {
+    displaySavedNote();
+});
