@@ -54,9 +54,8 @@ button, .button {
 #heartImage {
     width: 100px;
     margin-top: 10px;
-    display: block; /* Menjadikan elemen blok */
     margin-left: auto; /* Otomatis margin kiri */
-    margin-right: auto; /* Otomatis margin kanan */
+    margin-right: auto;
 }
 
 .hidden {
@@ -86,3 +85,4 @@ footer {
     from { opacity: 0; }
     to { opacity: 1; }
 }
+
