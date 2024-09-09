@@ -52,3 +52,31 @@ balloon.addEventListener("click", () => {
         scoreDisplay.innerText = "Skor: " + score;
     }
 });
+
+// Logika game sebelumnya
+
+// Lightbox untuk galeri
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
+const closeLightbox = document.querySelector(".close");
+const galleryImages = document.querySelectorAll(".gallery-img");
+
+// Ketika gambar diklik, buka lightbox dengan gambar yang diperbesar
+galleryImages.forEach((img) => {
+    img.addEventListener("click", (event) => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = event.target.src;
+    });
+});
+
+// Tutup lightbox saat tombol close diklik
+closeLightbox.addEventListener("click", () => {
+    lightbox.style.display = "none";
+});
+
+// Tutup lightbox jika pengguna mengklik di luar gambar
+lightbox.addEventListener("click", (event) => {
+    if (event.target === lightbox) {
+        lightbox.style.display = "none";
+    }
+});
