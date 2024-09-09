@@ -363,13 +363,7 @@ body {
     margin-top: 40px;
 }
 
-.audio-section h2 {
-    font-size: 1.5rem;
-    margin-bottom: 20px;
+.audio-section audio, .audio-section iframe {
+    display: none;
 }
 
-.audio-section iframe, .audio-section audio {
-    width: 100%;
-    max-width: 300px;
-    margin: 0 auto;
-}
