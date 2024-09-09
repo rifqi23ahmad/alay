@@ -283,3 +283,46 @@ body {
 .audio-container {
     text-align: center;
 }
+
+/* Gaya untuk Kalkulator */
+.calculator-section {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.calculator {
+    display: inline-block;
+    margin-top: 10px;
+}
+
+#display {
+    width: 200px;
+    height: 40px;
+    font-size: 1.5rem;
+    text-align: right;
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 50px);
+    gap: 5px;
+}
+
+.buttons button {
+    width: 50px;
+    height: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.buttons button:hover {
+    background-color: #e0e0e0;
+}
+
