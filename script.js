@@ -121,6 +121,9 @@ window.addEventListener("load", () => {
     displaySavedNote();
 });
 
+// Logika game dan lightbox sebelumnya
+
+// Kontrol Pemutaran Musik
 const backgroundAudio = document.getElementById("background-audio");
 const playBtn = document.getElementById("play-btn");
 
