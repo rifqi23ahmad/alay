@@ -87,41 +87,33 @@ lightbox.addEventListener("click", (event) => {
 
 // Logika game dan lightbox sebelumnya
 
-// Catatan - menggunakan localStorage
-const noteInput = document.getElementById("note-input");
-const saveNoteButton = document.getElementById("save-note");
-const savedNoteContainer = document.getElementById("saved-note");
-const savedNoteTime = document.getElementById("saved-note-time");
+// Menyimpan Catatan
+const noteInput = document.getElementById('note-input');
+const saveNoteButton = document.getElementById('save-note');
+const savedNoteContainer = document.getElementById('saved-note-container');
+const savedNote = document.getElementById('saved-note');
+const savedNoteTime = document.getElementById('saved-note-time');
 
-// Fungsi untuk menyimpan catatan ke localStorage
-saveNoteButton.addEventListener("click", () => {
-    const noteContent = noteInput.value;
-    const currentDateTime = new Date();  // Ambil waktu saat ini
+// Variabel untuk menyimpan catatan
+let notes = [];
 
-    if (noteContent.trim() !== "") {
-        // Simpan catatan dan waktu pembuatan ke localStorage
-        localStorage.setItem("savedNote", noteContent);
-        localStorage.setItem("savedNoteTime", currentDateTime.toLocaleString());  // Format tanggal dan waktu
-        displaySavedNote();  // Tampilkan catatan tersimpan
-        noteInput.disabled = true;  // Disable input agar tidak bisa diubah
-        saveNoteButton.disabled = true;  // Disable tombol simpan setelah catatan disimpan
+saveNoteButton.addEventListener('click', () => {
+    const noteText = noteInput.value.trim();
+    if (noteText !== '') {
+        const now = new Date();
+        // Menyimpan catatan baru ke dalam array
+        notes.push({ text: noteText, time: now });
+        // Menampilkan catatan terakhir
+        displayLastNote();
+        // Kosongkan textarea
+        noteInput.value = '';
     }
 });
 
-// Fungsi untuk menampilkan catatan yang tersimpan
-function displaySavedNote() {
-    const savedNote = localStorage.getItem("savedNote");
-    const savedTime = localStorage.getItem("savedNoteTime");
-
-    if (savedNote) {
-        savedNoteContainer.textContent = savedNote;  // Tampilkan catatan tersimpan
-        savedNoteTime.textContent = `Dibuat pada: ${savedTime}`;  // Tampilkan waktu pembuatan
-        noteInput.disabled = true;  // Matikan input agar tidak bisa diubah
-        saveNoteButton.disabled = true;  // Disable tombol simpan
+function displayLastNote() {
+    if (notes.length > 0) {
+        const lastNote = notes[notes.length - 1];
+        savedNote.textContent = lastNote.text;
+        savedNoteTime.textContent = `Disimpan pada: ${lastNote.time.toLocaleDateString()} ${lastNote.time.toLocaleTimeString()}`;
     }
 }
-
-// Tampilkan catatan tersimpan ketika halaman dimuat
-window.addEventListener("load", () => {
-    displaySavedNote();
-});
