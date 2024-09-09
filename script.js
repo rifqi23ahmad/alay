@@ -82,26 +82,24 @@ lightbox.addEventListener("click", (event) => {
 
 // Logika game dan lightbox sebelumnya
 
-// Catatan - menggunakan localStorage
-const noteInput = document.getElementById("note-input");
-const saveNoteButton = document.getElementById("save-note");
-const savedNoteContainer = document.getElementById("saved-note");
-const savedNoteTime = document.getElementById("saved-note-time");
+// Menyimpan Catatan
+const noteInput = document.getElementById('note-input');
+const saveNoteButton = document.getElementById('save-note');
+const savedNoteContainer = document.getElementById('saved-note-container');
+const savedNote = document.getElementById('saved-note');
+const savedNoteTime = document.getElementById('saved-note-time');
 
-// Fungsi untuk menyimpan catatan ke localStorage
-saveNoteButton.addEventListener("click", () => {
-    const noteContent = noteInput.value;
-    const currentDateTime = new Date();  // Ambil waktu saat ini
-
-    if (noteContent.trim() !== "") {
-        // Simpan catatan dan waktu pembuatan ke localStorage
-        localStorage.setItem("savedNote", noteContent);
-        localStorage.setItem("savedNoteTime", currentDateTime.toLocaleString());  // Format tanggal dan waktu
-        displaySavedNote();  // Tampilkan catatan tersimpan
-        noteInput.disabled = true;  // Disable input agar tidak bisa diubah
-        saveNoteButton.disabled = true;  // Disable tombol simpan setelah catatan disimpan
+saveNoteButton.addEventListener('click', () => {
+    const noteText = noteInput.value;
+    if (noteText.trim() !== '') {
+        // Menyimpan catatan dan menampilkan waktu
+        const now = new Date();
+        savedNote.textContent = noteText;
+        savedNoteTime.textContent = `Disimpan pada: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`;
+        noteInput.value = '';  // Kosongkan textarea setelah menyimpan
     }
 });
+
 
 // Fungsi untuk menampilkan catatan yang tersimpan
 function displaySavedNote() {
