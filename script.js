@@ -1,4 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
+    document.addEventListener('DOMContentLoaded', () => {
+        // Partikel.js
+        particlesJS.load('particleBackground', 'particles.json', function() {
+            console.log('particles.js config loaded');
+        });
+    
+        // Existing code
+    });
+    
     const showHeartButton = document.getElementById('showHeart');
     const heartImage = document.getElementById('heartImage');
     const backgroundMusic = document.getElementById('backgroundMusic');
