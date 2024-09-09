@@ -7,17 +7,16 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    
     <div class="container">
         <!-- Bagian Permintaan Maaf -->
         <section class="apology-section">
-            <h1>Maafkan Aku Hmm Hmm</h1>
-            <p>"Sayang, aku ingin meminta maaf atas sikapku selama ini. Aku sadar bahwa aku terlalu sering menggunakan logika 'if-then-else' dalam menghadapi masalah kita. Aku seharusnya lebih peka terhadap perasaanmu dan tidak selalu berusaha mencari solusi yang logis. Aku tahu, terkadang kamu hanya butuh didengar dan dihibur, bukan diberi solusi. Aku akan berusaha lebih keras untuk menjadi pendengar yang baik dan lebih peka terhadap emosi. Maafkan aku.".</p>
+            <h1>Minta Maaf</h1>
+            <p>Maafkan aku atas kesalahan yang telah ku perbuat. Aku sangat menyesal dan berjanji untuk tidak mengulanginya lagi.</p>
             
             <!-- Tombol -->
             <div class="button-group">
-                <a href="https://wa.me/6285174000214?text=Aku%20Memaafkan%20Kamau%20Sayang!" target="_blank" class="button forgiven">Dimaafkan</a>
-                <a href="https://wa.me/6285174000214?text=Saya%20Butuh%20Waktu%20Lebih%20Lama%20Untuk%20Memahami%20Pesan%20Ini" target="_blank" class="button not-forgiven">Belum Dimaafkan</a>
+                <a href="https://wa.me/62XXXXXX?text=Terima%20kasih%20telah%20memaafkan" class="button forgiven">Dimaafkan</a>
+                <a href="https://wa.me/62XXXXXX?text=Maaf%2C%20aku%20belum%20bisa%20memaafkan" class="button not-forgiven">Belum Dimaafkan</a>
             </div>
         </section>
 
@@ -25,22 +24,11 @@
         <section class="gallery-section">
             <h2>Kenangan Indah</h2>
             <div class="gallery">
-                <img src="PXL_20240616_120636617.NIGHT.jpg" alt="Foto Kenangan 1" class="gallery-img">
-                <img src="PXL_20240630_070912128.MP.jpg" alt="Foto Kenangan 2" class="gallery-img">
-                <!-- Tambahkan lebih banyak foto jika diperlukan -->
+                <img src="foto1.jpg" alt="Foto Kenangan 1" class="gallery-img">
+                <img src="foto2.jpg" alt="Foto Kenangan 2" class="gallery-img">
+                <img src="foto3.jpg" alt="Foto Kenangan 3" class="gallery-img">
             </div>
         </section>
-
-        <!-- Pindahkan Bagian Audio ke bawah Galeri Foto -->
-        <section class="audio-section">
-            <div class="audio-container">
-                <audio controls>
-                    <source src="Monolog.mp4" type="audio/mpeg">
-                    Your browser does not support the audio element.
-                </audio>
-            </div>
-        </section>
-
 
         <!-- Game -->
         <section class="game-section">
@@ -54,18 +42,16 @@
         </section>
 
         <!-- Catatan -->
-        <!-- Catatan -->
         <section class="notes-section">
             <h2>Catatan Pribadi</h2>
             <textarea id="note-input" placeholder="Tuliskan catatanmu di sini..."></textarea>
             <button id="save-note" class="button start-game">Simpan Catatan</button>
             <div id="saved-note-container">
-            <h3>Catatan Tersimpan:</h3>
-            <p id="saved-note"></p>
-            <small id="saved-note-time"></small>
+                <h3>Catatan Tersimpan:</h3>
+                <p id="saved-note"></p>
+                <small id="saved-note-time"></small>
             </div>
         </section>
-
     </div>
 
     <!-- Modal untuk Lightbox -->

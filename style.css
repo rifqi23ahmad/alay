@@ -98,12 +98,6 @@ body {
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-}
-
-.gallery img:hover {
-    transform: scale(1.05);
-    transition: transform 0.3s;
 }
 
 /* Bagian Game */
@@ -142,34 +136,66 @@ body {
     background-color: #1976D2;
 }
 
-/* Style untuk catatan yang tersimpan */
-#saved-note-container {
-    margin-top: 20px;
+/* Media Query untuk layar kecil (ponsel) */
+@media (max-width: 768px) {
+    .apology-section h1 {
+        font-size: 2rem;
+    }
+
+    .apology-section p {
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 15px;
+    }
+
+    .gallery img {
+        max-width: 100px;
+    }
+
+    #game-container {
+        width: 100%;
+        height: 200px;
+    }
+
+    #balloon {
+        width: 40px;
+        height: 60px;
+    }
 }
 
-#saved-note-container h3 {
-    font-size: 1.2rem;
-    margin-bottom: 10px;
+@media (max-width: 480px) {
+    .apology-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .apology-section p {
+        font-size: 0.9rem;
+    }
+
+    .gallery img {
+        max-width: 80px;
+    }
+
+    #game-container {
+        height: 150px;
+    }
+
+    #balloon {
+        width: 35px;
+        height: 55px;
+    }
 }
 
-#saved-note {
-    font-size: 1rem;
-    color: #555;
-    background-color: #f0f0f0;
-    padding: 10px;
-    border-radius: 5px;
-    border: 1px solid #ddd;
-    display: inline-block;
-    max-width: 100%;
-    word-wrap: break-word;
-}
-
-#saved-note-time {
-    font-size: 0.8rem;
-    color: #888;
-    margin-top: 5px;
-    display: block;
-}
+/* Style umum sebelumnya */
 
 /* Lightbox style */
 .lightbox {
@@ -209,82 +235,42 @@ body {
     cursor: pointer;
 }
 
-/* Media Query untuk layar kecil (ponsel) */
-@media (max-width: 768px) {
-    .apology-section h1 {
-        font-size: 2rem;
-    }
-
-    .apology-section p {
-        font-size: 1rem;
-    }
-
-    .button-group {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .button {
-        width: 100%;
-        max-width: 300px;
-        margin-bottom: 15px;
-    }
-
-    .gallery img {
-        max-width: 100px;
-    }
-
-    #game-container {
-        width: 100%;
-        height: 200px;
-    }
-
-    #balloon {
-        width: 40px;
-        height: 60px;
-    }
-
-    .notes-section h2 {
-        font-size: 1.8rem;
-    }
-
-    #note-input {
-        height: 80px;
-    }
-}
-
-@media (max-width: 480px) {
-    .apology-section h1 {
-        font-size: 1.5rem;
-    }
-
-    .apology-section p {
-        font-size: 0.9rem;
-    }
-
-    .gallery img {
-        max-width: 80px;
-    }
-
-    #game-container {
-        height: 150px;
-    }
-
-    #balloon {
-        width: 35px;
-        height: 55px;
-    }
-
-    .notes-section h2 {
-        font-size: 1.5rem;
-    }
-
-    #note-input {
-        height: 70px;
-    }
-}
+/* Style untuk bagian catatan */
 .notes-section {
+    padding: 40px 20px;
     text-align: center;
+}
+
+.notes-section textarea {
+    width: 100%;
+    max-width: 500px;
+    height: 100px;
+    padding: 10px;
+    font-size: 1rem;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+}
+
+#saved-note-container {
+    margin-top: 20px;
+}
+
+#saved-note-container h3 {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+}
+
+#saved-note {
+    font-size: 1rem;
+    color: #555;
+    background-color: #f0f0f0;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    display: inline-block;
+    max-width: 100%;
+    word-wrap: break-word;
 }
 
 /* Style untuk catatan yang tersimpan */
@@ -314,26 +300,4 @@ body {
     color: #888;
     margin-top: 5px;
     display: block;
-}
-
-.audio-section {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 20px;
-}
-
-.audio-container {
-    text-align: center;
-}
-
-.play-btn {
-    margin-top: 20px;
-    padding: 10px 20px;
-    font-size: 1.5rem;
-    cursor: pointer;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
 }

@@ -82,6 +82,11 @@ lightbox.addEventListener("click", (event) => {
 
 // Logika game dan lightbox sebelumnya
 
+// Logika game sebelumnya
+// Lightbox sebelumnya
+
+// Logika game dan lightbox sebelumnya
+
 // Catatan - menggunakan localStorage
 const noteInput = document.getElementById("note-input");
 const saveNoteButton = document.getElementById("save-note");
