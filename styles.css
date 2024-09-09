@@ -53,10 +53,7 @@ button, .button {
 
 #heartImage {
     width: 100px;
-    margin-top: 10px;
-    display: hidden;
-    margin-left: auto; /* Otomatis margin kiri */
-    margin-right: auto;
+    margin-top: 10px;  
 }
 
 .hidden {
