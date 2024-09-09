@@ -328,6 +328,9 @@ body {
         height: 70px;
     }
 }
+.notes-section {
+    text-align: center;
+}
 
 /* Style untuk catatan yang tersimpan */
 #saved-note-container {

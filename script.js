@@ -120,19 +120,3 @@ function displaySavedNote() {
 window.addEventListener("load", () => {
     displaySavedNote();
 });
-
-// Logika game dan lightbox sebelumnya
-
-// Kontrol Pemutaran Musik
-const backgroundAudio = document.getElementById("background-audio");
-const playBtn = document.getElementById("play-btn");
-
-playBtn.addEventListener("click", () => {
-    if (backgroundAudio.paused) {
-        backgroundAudio.play();  // Mulai pemutaran audio
-        playBtn.textContent = "Pause";  // Ubah teks tombol menjadi Pause
-    } else {
-        backgroundAudio.pause();  // Hentikan pemutaran audio
-        playBtn.textContent = "Play";  // Ubah teks tombol menjadi Play
-    }
-});
