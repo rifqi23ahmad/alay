@@ -1,3 +1,4 @@
+/* Reset dasar */
 * {
     margin: 0;
     padding: 0;
@@ -23,6 +24,7 @@ body {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Bagian Permintaan Maaf */
 .apology-section {
     text-align: center;
 }
@@ -41,6 +43,7 @@ body {
 .button-group {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .button {
@@ -52,6 +55,7 @@ body {
     border-radius: 5px;
     width: 45%;
     text-align: center;
+    margin-bottom: 10px;
 }
 
 .forgiven {
@@ -66,6 +70,7 @@ body {
     opacity: 0.8;
 }
 
+/* Galeri Foto */
 .gallery-section {
     margin-top: 40px;
     text-align: center;
@@ -80,16 +85,18 @@ body {
     display: flex;
     gap: 10px;
     justify-content: center;
+    flex-wrap: wrap;
 }
 
 .gallery img {
-    width: 30%;
+    width: 100%;
+    max-width: 150px;
     height: auto;
     border-radius: 5px;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
-/* Tambahkan gaya untuk game balon */
+/* Bagian Game */
 .game-section {
     margin-top: 40px;
     text-align: center;
@@ -97,7 +104,8 @@ body {
 
 #game-container {
     position: relative;
-    width: 300px;
+    width: 100%;
+    max-width: 300px;
     height: 300px;
     margin: 0 auto;
     border: 2px solid #ddd;
@@ -122,4 +130,63 @@ body {
 
 .start-game:hover {
     background-color: #1976D2;
+}
+
+/* Media Query untuk layar kecil (ponsel) */
+@media (max-width: 768px) {
+    .apology-section h1 {
+        font-size: 1.5rem;
+    }
+
+    .apology-section p {
+        font-size: 1rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .button {
+        width: 100%;
+        max-width: 300px;
+        margin-bottom: 15px;
+    }
+
+    .gallery img {
+        max-width: 100px;
+    }
+
+    #game-container {
+        width: 100%;
+        height: 200px;
+    }
+
+    #balloon {
+        width: 40px;
+        height: 60px;
+    }
+}
+
+@media (max-width: 480px) {
+    .apology-section h1 {
+        font-size: 1.2rem;
+    }
+
+    .apology-section p {
+        font-size: 0.9rem;
+    }
+
+    .gallery img {
+        max-width: 80px;
+    }
+
+    #game-container {
+        height: 150px;
+    }
+
+    #balloon {
+        width: 35px;
+        height: 55px;
+    }
 }
