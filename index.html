@@ -1,33 +1,50 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Permintaan Maaf</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div class="container">
-        <header>
-            <h1>Maafkan Aku</h1>
-        </header>
-        <main>
-            <div class="message-box">
-                <p id="message">Aku ingin meminta maaf dari hati yang terdalam. Aku sangat menyesal atas kesalahan yang telah ku buat dan aku berjanji untuk memperbaiki semuanya.</p>
-                <button id="showHeart">Lihat Hati</button>
-                <img id="heartImage" src="images/heart.png" alt="Hati" class="hidden">
-                <div class="response-buttons">
-                    <a href="https://wa.me/6285174000214?text=Aku%20Memaafkan%20Kamau%20Sayang!" target="_blank" class="button">Ya</a>
-                    <a href="https://wa.me/6285174000214?text=Saya%20Butuh%20Waktu%20Lebih%20Lama%20Untuk%20Memahami%20Pesan%20Ini" target="_blank" class="button">Tidak</a>
-                </div>
+        <!-- Bagian Permintaan Maaf -->
+        <section class="apology-section">
+            <h1>Minta Maaf</h1>
+            <p>Maafkan aku atas kesalahan yang telah ku perbuat. Aku sangat menyesal dan berjanji untuk tidak mengulanginya lagi.</p>
+            
+            <!-- Tombol -->
+            <div class="button-group">
+                <a href="https://wa.me/6285174000214?text=Aku%20Memaafkan%20Kamau%20Sayang!" target="_blank" class="button">Ya</a>
+                <a href="https://wa.me/6285174000214?text=Saya%20Butuh%20Waktu%20Lebih%20Lama%20Untuk%20Memahami%20Pesan%20Ini" target="_blank" class="button">Tidak</a>
             </div>
-            <div id="particleBackground"></div>
-        </main>
-        <footer>
-            <p>Dengan segala cinta, Rifqi </p>
-        </footer>
+            </div>
+        </section>
+
+        <!-- Galeri Foto -->
+        <section class="gallery-section">
+            <h2>Kenangan Indah</h2>
+            <div class="gallery">
+                <img src="foto1.jpg" alt="Foto Kenangan 1">
+                <img src="foto2.jpg" alt="Foto Kenangan 2">
+                <img src="foto3.jpg" alt="Foto Kenangan 3">
+                <!-- Tambahkan lebih banyak foto jika diperlukan -->
+            </div>
+        </section>
+
+        <!-- Game -->
+        <section class="game-section">
+            <h2>Permainan Klik Balon</h2>
+            <p>Coba klik balon sebanyak mungkin dalam 10 detik!</p>
+            <div id="game-container">
+                <div id="balloon"></div>
+            </div>
+            <p id="score">Skor: 0</p>
+            <button id="start-game" class="button start-game">Mulai Permainan</button>
+        </section>
     </div>
+
+    <!-- Link ke file JavaScript -->
     <script src="script.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
 </body>
 </html>
