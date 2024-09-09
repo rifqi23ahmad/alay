@@ -53,7 +53,7 @@ button, .button {
 
 #heartImage {
     width: 100px;
-    margin-top: 10px;  
+    margin-top: 10px;
 }
 
 .hidden {
@@ -83,4 +83,3 @@ footer {
     from { opacity: 0; }
     to { opacity: 1; }
 }
-
