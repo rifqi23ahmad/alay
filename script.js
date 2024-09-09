@@ -1,20 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
-    document.addEventListener('DOMContentLoaded', () => {
-        // Partikel.js
-        particlesJS.load('particleBackground', 'particles.json', function() {
-            console.log('particles.js config loaded');
-        });
-    
-        // Existing code
-    });
-    
     const showHeartButton = document.getElementById('showHeart');
     const heartImage = document.getElementById('heartImage');
-    const backgroundMusic = document.getElementById('backgroundMusic');
-
-    // Play background music
-    backgroundMusic.volume = 0.2; // Adjust volume as needed
-    backgroundMusic.play();
 
     showHeartButton.addEventListener('click', () => {
         heartImage.classList.toggle('hidden');

@@ -10,6 +10,21 @@ body {
     height: 100vh; /* Mengatur tinggi viewport */
 }
 
+.youtube-container {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+iframe#backgroundMusic {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: none;
+    display: none; /* Menyembunyikan iframe dari tampilan */
+}
+
 .container {
     max-width: 800px;
     margin: 0 auto;
@@ -89,14 +104,6 @@ footer {
 
 .response-buttons {
     margin-top: 20px;
-}
-
-iframe#backgroundMusic {
-    position: absolute;
-    width: 0;
-    height: 0;
-    border: none;
-    display: none; /* Menyembunyikan iframe dari tampilan */
 }
 
 @keyframes fadeIn {
