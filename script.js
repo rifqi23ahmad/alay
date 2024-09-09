@@ -85,14 +85,10 @@ lightbox.addEventListener("click", (event) => {
 // Logika game sebelumnya
 // Lightbox sebelumnya
 
-// Logika game dan lightbox sebelumnya
-
 // Menyimpan Catatan
 const noteInput = document.getElementById('note-input');
 const saveNoteButton = document.getElementById('save-note');
-const savedNoteContainer = document.getElementById('saved-note-container');
-const savedNote = document.getElementById('saved-note');
-const savedNoteTime = document.getElementById('saved-note-time');
+const noteHistory = document.getElementById('note-history');
 
 // Variabel untuk menyimpan catatan
 let notes = [];
@@ -103,17 +99,20 @@ saveNoteButton.addEventListener('click', () => {
         const now = new Date();
         // Menyimpan catatan baru ke dalam array
         notes.push({ text: noteText, time: now });
-        // Menampilkan catatan terakhir
-        displayLastNote();
+        // Menampilkan riwayat catatan
+        displayNoteHistory();
         // Kosongkan textarea
         noteInput.value = '';
     }
 });
 
-function displayLastNote() {
-    if (notes.length > 0) {
-        const lastNote = notes[notes.length - 1];
-        savedNote.textContent = lastNote.text;
-        savedNoteTime.textContent = `Disimpan pada: ${lastNote.time.toLocaleDateString()} ${lastNote.time.toLocaleTimeString()}`;
-    }
+function displayNoteHistory() {
+    // Bersihkan daftar catatan yang ada
+    noteHistory.innerHTML = '';
+    // Menambahkan setiap catatan ke dalam daftar
+    notes.forEach(note => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${note.text} - Disimpan pada: ${note.time.toLocaleDateString()} ${note.time.toLocaleTimeString()}`;
+        noteHistory.appendChild(listItem);
+    });
 }
