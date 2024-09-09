@@ -359,12 +359,23 @@ body {
 }
 
 .audio-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.audio-container {
     text-align: center;
-    margin-top: 40px;
 }
 
-#background-audio {
-    display: none; /* Menyembunyikan elemen video dari tampilan */
+.play-btn {
+    margin-top: 20px;
+    padding: 10px 20px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
 }
-
-
