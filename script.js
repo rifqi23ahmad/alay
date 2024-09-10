@@ -84,21 +84,14 @@ const noteInput = document.getElementById('note-input');
 const saveNoteButton = document.getElementById('save-note');
 const noteHistory = document.getElementById('note-history');
 
-// Fungsi untuk mendapatkan catatan dari JSONPlaceholder
-async function getNotes() {
-    try {
-        const response = await fetch('https://noiton-next-memos-demo.vercel.app/posts');
-        const data = await response.json();
-        displayNoteHistory(data);
-    } catch (error) {
-        console.error('Error fetching notes:', error);
-    }
-}
+const noteInput = document.getElementById('note-input');
+const saveNoteButton = document.getElementById('save-note');
+const noteHistory = document.getElementById('note-history');
 
 // Fungsi untuk menambahkan catatan ke JSONPlaceholder
 async function addNote(note) {
     try {
-        const response = await fetch('https://noiton-next-memos-demo.vercel.app/posts', {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -107,29 +100,32 @@ async function addNote(note) {
         });
         const data = await response.json();
         console.log('Note added:', data);
-        // Update catatan setelah berhasil menambah
+        // Perbarui riwayat catatan setelah berhasil menambah catatan
         getNotes();
     } catch (error) {
         console.error('Error adding note:', error);
     }
 }
 
-// Fungsi untuk menghapus catatan dari JSONPlaceholder
-async function deleteNote(id) {
+// Fungsi untuk mendapatkan catatan dari JSONPlaceholder
+async function getNotes() {
     try {
-        const response = await fetch(`https://noiton-next-memos-demo.vercel.app/posts/${id}`, {
-            method: 'DELETE'
-        });
-        if (response.ok) {
-            console.log('Note deleted:', id);
-            // Update catatan setelah berhasil menghapus
-            getNotes();
-        } else {
-            console.error('Failed to delete note');
-        }
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const data = await response.json();
+        displayNoteHistory(data);
     } catch (error) {
-        console.error('Error deleting note:', error);
+        console.error('Error fetching notes:', error);
     }
+}
+
+// Fungsi untuk menampilkan riwayat catatan
+function displayNoteHistory(notes) {
+    noteHistory.innerHTML = '';
+    notes.forEach(note => {
+        const listItem = document.createElement('li');
+        listItem.textContent = `${note.title} - ${note.body}`;
+        noteHistory.appendChild(listItem);
+    });
 }
 
 // Event listener untuk menyimpan catatan
@@ -137,42 +133,22 @@ saveNoteButton.addEventListener('click', () => {
     const noteText = noteInput.value.trim();
     if (noteText !== '') {
         const now = new Date();
-        // Menyimpan catatan baru ke JSONPlaceholder
+        // Membuat catatan baru
         const note = {
             title: noteText,
             body: `Disimpan pada: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`,
             userId: 1 // userId fiktif, sesuaikan dengan kebutuhan
         };
+        // Menyimpan catatan ke JSONPlaceholder
         addNote(note);
         // Kosongkan textarea
         noteInput.value = '';
     }
 });
 
-// Fungsi untuk menampilkan riwayat catatan
-function displayNoteHistory(notes) {
-    // Bersihkan daftar catatan yang ada
-    noteHistory.innerHTML = '';
-    // Menambahkan setiap catatan ke dalam daftar
-    notes.forEach(note => {
-        const listItem = document.createElement('li');
-        listItem.textContent = `${note.title} - ${note.body} `;
-
-        // Tambahkan tombol hapus
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Hapus';
-        deleteButton.className = 'button';
-        deleteButton.addEventListener('click', () => {
-            deleteNote(note.id);
-        });
-
-        listItem.appendChild(deleteButton);
-        noteHistory.appendChild(listItem);
-    });
-}
-
 // Ambil catatan ketika halaman dimuat
 getNotes();
+
 
 
 // Kalkulator
