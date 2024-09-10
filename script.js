@@ -93,16 +93,59 @@ const noteHistory = document.getElementById('note-history');
 // Variabel untuk menyimpan catatan
 let notes = [];
 
-saveNoteButton.addEventListener('click', () => {
+const noteInput = document.getElementById('note-input');
+const saveNoteButton = document.getElementById('save-note');
+const noteHistory = document.getElementById('note-history');
+
+// Variabel untuk menyimpan catatan
+let notes = [];
+
+// Fetch notes dari JSONPlaceholder (Simulasi GET)
+async function fetchNotes() {
+    try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const data = await response.json();
+        // Hanya menampilkan beberapa catatan (karena JSONPlaceholder mengembalikan 100 item)
+        notes = data.slice(0, 10).map(item => ({
+            text: item.title,
+            time: new Date()
+        }));
+        displayNoteHistory();
+    } catch (error) {
+        console.error('Error fetching notes:', error);
+    }
+}
+
+// Simpan catatan baru (Simulasi POST)
+saveNoteButton.addEventListener('click', async () => {
     const noteText = noteInput.value.trim();
     if (noteText !== '') {
         const now = new Date();
-        // Menyimpan catatan baru ke dalam array
-        notes.push({ text: noteText, time: now });
-        // Menampilkan riwayat catatan
-        displayNoteHistory();
-        // Kosongkan textarea
-        noteInput.value = '';
+
+        // Simpan ke JSONPlaceholder (Simulasi POST)
+        try {
+            const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+                method: 'POST',
+                body: JSON.stringify({
+                    title: noteText,
+                    body: 'Catatan ini disimpan',
+                    userId: 1
+                }),
+                headers: {
+                    'Content-type': 'application/json; charset=UTF-8',
+                },
+            });
+
+            const data = await response.json();
+            // Menyimpan catatan baru ke dalam array
+            notes.push({ text: data.title, time: now });
+            // Menampilkan riwayat catatan
+            displayNoteHistory();
+            // Kosongkan textarea
+            noteInput.value = '';
+        } catch (error) {
+            console.error('Error saving note:', error);
+        }
     }
 });
 
@@ -116,6 +159,10 @@ function displayNoteHistory() {
         noteHistory.appendChild(listItem);
     });
 }
+
+// Fetch notes saat halaman dimuat
+fetchNotes();
+
 
 // Kalkulator
 function appendToDisplay(value) {
