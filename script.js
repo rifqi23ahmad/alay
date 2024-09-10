@@ -114,6 +114,24 @@ async function addNote(note) {
     }
 }
 
+// Fungsi untuk menghapus catatan dari JSONPlaceholder
+async function deleteNote(id) {
+    try {
+        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+            method: 'DELETE'
+        });
+        if (response.ok) {
+            console.log('Note deleted:', id);
+            // Update catatan setelah berhasil menghapus
+            getNotes();
+        } else {
+            console.error('Failed to delete note');
+        }
+    } catch (error) {
+        console.error('Error deleting note:', error);
+    }
+}
+
 // Event listener untuk menyimpan catatan
 saveNoteButton.addEventListener('click', () => {
     const noteText = noteInput.value.trim();
@@ -138,7 +156,17 @@ function displayNoteHistory(notes) {
     // Menambahkan setiap catatan ke dalam daftar
     notes.forEach(note => {
         const listItem = document.createElement('li');
-        listItem.textContent = `${note.title} - ${note.body}`;
+        listItem.textContent = `${note.title} - ${note.body} `;
+
+        // Tambahkan tombol hapus
+        const deleteButton = document.createElement('button');
+        deleteButton.textContent = 'Hapus';
+        deleteButton.className = 'button';
+        deleteButton.addEventListener('click', () => {
+            deleteNote(note.id);
+        });
+
+        listItem.appendChild(deleteButton);
         noteHistory.appendChild(listItem);
     });
 }
