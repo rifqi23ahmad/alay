@@ -87,7 +87,7 @@ const noteHistory = document.getElementById('note-history');
 // Fungsi untuk mendapatkan catatan dari JSONPlaceholder
 async function getNotes() {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
+        const response = await fetch('https://noiton-next-memos-demo.vercel.app/posts');
         const data = await response.json();
         displayNoteHistory(data);
     } catch (error) {
@@ -98,7 +98,7 @@ async function getNotes() {
 // Fungsi untuk menambahkan catatan ke JSONPlaceholder
 async function addNote(note) {
     try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts', {
+        const response = await fetch('https://noiton-next-memos-demo.vercel.app/posts', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
@@ -117,7 +117,7 @@ async function addNote(note) {
 // Fungsi untuk menghapus catatan dari JSONPlaceholder
 async function deleteNote(id) {
     try {
-        const response = await fetch(`https://jsonplaceholder.typicode.com/posts/${id}`, {
+        const response = await fetch(`https://noiton-next-memos-demo.vercel.app/posts/${id}`, {
             method: 'DELETE'
         });
         if (response.ok) {
