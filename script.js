@@ -86,6 +86,10 @@ const noteInput = document.getElementById('note-input');
 const saveNoteButton = document.getElementById('save-note');
 const noteHistory = document.getElementById('note-history');
 
+const noteInput = document.getElementById('note-input');
+const saveNoteButton = document.getElementById('save-note');
+const noteHistory = document.getElementById('note-history');
+
 // Fungsi untuk mendapatkan catatan dari JSONPlaceholder
 async function getNotes() {
     try {
