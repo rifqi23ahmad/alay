@@ -4,7 +4,7 @@ const scoreDisplay = document.getElementById("score");
 const startButton = document.getElementById("start-game");
 let score = 0;
 let gameActive = false;
-let gameTime = 10; // durasi permainan dalam detik
+let gameTime = 1000; // durasi permainan dalam detik
 let gameTimer;
 
 // Fungsi untuk memulai permainan
@@ -18,7 +18,7 @@ function startGame() {
     startButton.disabled = true;
 
     // Mulai hitungan waktu
-    gameTimer = setTimeout(endGame, gameTime * 1000);
+    gameTimer = setTimeout(endGame, gameTime * 10000);
 
     moveBalloon();
 }
@@ -43,7 +43,7 @@ function moveBalloon() {
     balloon.style.top = randomY + "px";
 
     // Balon akan bergerak setiap 700ms
-    setTimeout(moveBalloon, 700);
+    setTimeout(moveBalloon, 800);
 }
 
 // Fungsi untuk menambah skor ketika balon diklik
