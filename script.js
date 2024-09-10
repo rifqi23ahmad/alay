@@ -84,6 +84,9 @@ const noteInput = document.getElementById('note-input');
 const saveNoteButton = document.getElementById('save-note');
 const noteHistory = document.getElementById('note-history');
 
+// Menyimpan catatan secara lokal
+let localNotes = [];
+
 // Fungsi untuk menambahkan catatan ke JSONPlaceholder
 async function addNote(note) {
     try {
@@ -96,21 +99,12 @@ async function addNote(note) {
         });
         const data = await response.json();
         console.log('Note added:', data);
-        // Perbarui riwayat catatan setelah berhasil menambah catatan
-        getNotes();
+
+        // Simpan catatan ke array lokal dan perbarui UI
+        localNotes.push(data);
+        displayNoteHistory(localNotes);
     } catch (error) {
         console.error('Error adding note:', error);
-    }
-}
-
-// Fungsi untuk mendapatkan catatan dari JSONPlaceholder
-async function getNotes() {
-    try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const data = await response.json();
-        displayNoteHistory(data);
-    } catch (error) {
-        console.error('Error fetching notes:', error);
     }
 }
 
@@ -135,16 +129,12 @@ saveNoteButton.addEventListener('click', () => {
             body: `Disimpan pada: ${now.toLocaleDateString()} ${now.toLocaleTimeString()}`,
             userId: 1 // userId fiktif, sesuaikan dengan kebutuhan
         };
-        // Menyimpan catatan ke JSONPlaceholder
+        // Menyimpan catatan ke JSONPlaceholder dan perbarui lokal
         addNote(note);
         // Kosongkan textarea
         noteInput.value = '';
     }
 });
-
-// Ambil catatan ketika halaman dimuat
-getNotes();
-
 
 
 // Kalkulator
