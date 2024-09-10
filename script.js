@@ -81,25 +81,9 @@ lightbox.addEventListener("click", (event) => {
 });
 
 // Logika game dan lightbox sebelumnya
-
 const noteInput = document.getElementById('note-input');
 const saveNoteButton = document.getElementById('save-note');
 const noteHistory = document.getElementById('note-history');
-
-const noteInput = document.getElementById('note-input');
-const saveNoteButton = document.getElementById('save-note');
-const noteHistory = document.getElementById('note-history');
-
-// Fungsi untuk mendapatkan catatan dari JSONPlaceholder
-async function getNotes() {
-    try {
-        const response = await fetch('https://jsonplaceholder.typicode.com/posts');
-        const data = await response.json();
-        displayNoteHistory(data);
-    } catch (error) {
-        console.error('Error fetching notes:', error);
-    }
-}
 
 // Fungsi untuk menambahkan catatan ke JSONPlaceholder
 async function addNote(note) {
