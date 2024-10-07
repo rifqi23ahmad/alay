@@ -183,3 +183,51 @@ function calculateResult() {
 
         // Update countdown setiap detik
         const interval = setInterval(updateCountdown, 1000);
+
+let score = 0;
+let isPlaying = false;
+let target;
+
+document.getElementById('startBtn').addEventListener('click', startGame);
+
+function startGame() {
+    score = 0;
+    isPlaying = true;
+    document.getElementById('score').innerText = `Skor: ${score}`;
+    moveTarget();
+}
+
+function moveTarget() {
+    if (!isPlaying) return;
+
+    target = document.getElementById('target');
+    const gameArea = document.getElementById('gameArea');
+
+    const x = Math.random() * (gameArea.clientWidth - 100);
+    const y = Math.random() * (gameArea.clientHeight - 100);
+
+    target.style.left = `${x}px`;
+    target.style.top = `${y}px`;
+    
+    target.addEventListener('click', hitTarget);
+
+    setTimeout(() => {
+        if (isPlaying) {
+            moveTarget();
+        }
+    }, 1000);
+}
+
+function hitTarget() {
+    score++;
+    document.getElementById('score').innerText = `Skor: ${score}`;
+    moveTarget();
+}
+
+// Menambahkan event listener untuk menghentikan permainan jika foto tidak dipukul dalam waktu tertentu
+setTimeout(() => {
+    if (isPlaying) {
+        isPlaying = false;
+        alert(`Permainan selesai! Skor akhir: ${score}`);
+    }
+}, 15000); // 15 detik permainan
