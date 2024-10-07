@@ -175,4 +175,4 @@ setTimeout(() => {
         isPlaying = false;
         alert(`Permainan selesai! Skor akhir: ${score}`);
     }
-}, 15000); // 15 detik permainan
+}, 150000); // 15 detik permainan
